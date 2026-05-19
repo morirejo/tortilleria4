@@ -14,12 +14,13 @@ import java.util.List;
 public class VentaLocalBO extends VentaBO {
     private String metodoPago;
 
-    public VentaLocalBO(int idVenta, double montoTotal, Date fechaHora, String metodoPago, List<DetalleVentaBO> carrito) {
-        super(idVenta, montoTotal, fechaHora, "LOCAL", carrito);
+    public VentaLocalBO(int idVenta, double montoTotal, Date fechaHora, String metodoPago, String usuario, List<DetalleVentaBO> carrito) {
+        super(idVenta, montoTotal, fechaHora, "LOCAL", usuario, carrito);
         this.metodoPago = metodoPago;
     }
 
     public String getMetodoPago() { 
         return metodoPago; 
     }
+    
 }

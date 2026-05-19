@@ -30,20 +30,18 @@ public class GestorCancelacion {
     }
 
   
-    public boolean cancelarVentaConRegistro(int idVenta, String motivo, VentaDTO snapshot) {
-        CancelacionDTO registro = new CancelacionDTO(idVenta, new Date(), motivo, snapshot);
+    public boolean cancelarVentaConRegistro(int idVenta, String motivo, String usuario, VentaDTO snapshot) {
+        CancelacionDTO registro = new CancelacionDTO(idVenta, new Date(), motivo, usuario, snapshot);
         boolean registrado = cancelacionDAO.registrarCancelacion(registro);
         if (!registrado) {
             System.err.println("No se pudo registrar la cancelación del folio " + idVenta);
             return false;
         }
-
         boolean eliminado = ventaDAO.cancelarVenta(idVenta);
         if (!eliminado) {
             System.err.println("Se registró la cancelación pero no se pudo eliminar la venta " + idVenta);
             return false;
         }
-
         return true;
     }
 

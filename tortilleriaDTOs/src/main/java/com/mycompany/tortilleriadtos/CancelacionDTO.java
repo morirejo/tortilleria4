@@ -15,17 +15,28 @@ public class CancelacionDTO {
     private int idVenta;            
     private Date fechaCancelacion;  
     private String motivo;         
+    private String usuario;
     private VentaDTO ventaOriginal; 
 
     public CancelacionDTO() {}
 
-    public CancelacionDTO(int idVenta, Date fechaCancelacion, String motivo, VentaDTO ventaOriginal) {
+    public CancelacionDTO(int idVenta, Date fechaCancelacion, String motivo, String usuario, VentaDTO ventaOriginal) {
         this.idVenta = idVenta;
         this.fechaCancelacion = fechaCancelacion;
         this.motivo = motivo;
+        this.usuario = usuario;
         this.ventaOriginal = ventaOriginal;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
+    
     public String getIdCancelacion() { return idCancelacion; }
     public void setIdCancelacion(String idCancelacion) { this.idCancelacion = idCancelacion; }
 

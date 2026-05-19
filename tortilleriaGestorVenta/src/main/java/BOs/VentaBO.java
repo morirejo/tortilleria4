@@ -17,15 +17,25 @@ public class VentaBO {
     protected Date fechaHora;
     protected String tipoVenta;
     protected List<DetalleVentaBO> carrito;
+    protected String usuario;
 
-    public VentaBO(int idVenta, double montoTotal, Date fechaHora, String tipoVenta, List<DetalleVentaBO> carrito) {
+    public VentaBO(int idVenta, double montoTotal, Date fechaHora, String tipoVenta, String usuario, List<DetalleVentaBO> carrito) {
         this.idVenta = idVenta;
         this.montoTotal = montoTotal;
         this.fechaHora = fechaHora;
         this.tipoVenta = tipoVenta;
+        this.usuario = usuario;
         this.carrito = carrito;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
     public int getIdVenta() {
         return idVenta;
     }

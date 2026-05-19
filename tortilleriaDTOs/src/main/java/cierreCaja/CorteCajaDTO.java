@@ -18,8 +18,9 @@ public class CorteCajaDTO {
     private double efectivoContado;
     private double diferencia;
     private Date fecha;
+    private String usuario;
 
-    public CorteCajaDTO(double efectivo, double credito, double debito, double contado) {
+    public CorteCajaDTO(double efectivo, double credito, double debito, double contado, String usuario) {
         this.ventasEfectivo = efectivo;
         this.ventasCredito = credito;
         this.ventasDebito = debito;
@@ -27,11 +28,20 @@ public class CorteCajaDTO {
         this.efectivoContado = contado;
         this.diferencia = contado - efectivo; 
         this.fecha = new Date();
+        this.usuario = usuario;
     }
-
+    
     public CorteCajaDTO() {
     }
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+    
     public double getVentasEfectivo() {
         return ventasEfectivo;
     }

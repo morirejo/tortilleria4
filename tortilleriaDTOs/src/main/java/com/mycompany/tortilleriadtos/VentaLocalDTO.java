@@ -15,10 +15,11 @@ public class VentaLocalDTO extends VentaDTO {
     private String metodoPago;
     
     public VentaLocalDTO() {
+        super();
     }
 
-    public VentaLocalDTO(int idVenta, double montoTotal, Date fechaHora, String metodoPago, List<DetalleVentaDTO> carrito) {
-        super(idVenta, montoTotal, fechaHora, "LOCAL", carrito);
+    public VentaLocalDTO(int idVenta, double montoTotal, Date fechaHora, String metodoPago, String usuario, List<DetalleVentaDTO> carrito) {
+        super(idVenta, montoTotal, fechaHora, "LOCAL", usuario, carrito);
         this.metodoPago = metodoPago;
     }
 

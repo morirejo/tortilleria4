@@ -25,9 +25,8 @@ public class MapeadorVenta {
 
         if (dto instanceof VentaLocalDTO) {
             VentaLocalDTO local = (VentaLocalDTO) dto;
-            return new VentaLocalBO(local.getIdVenta(), local.getMontoTotal(), local.getFechaHora(), local.getMetodoPago(), carritoBO);
+            return new VentaLocalBO(local.getIdVenta(), local.getMontoTotal(), local.getFechaHora(), local.getMetodoPago(), local.getUsuario(), carritoBO);
         }
-        
         return null; 
     }
     
@@ -38,7 +37,7 @@ public class MapeadorVenta {
         }
         if (bo instanceof VentaLocalBO) {
             VentaLocalBO local = (VentaLocalBO) bo;
-            return new VentaLocalDTO(local.getIdVenta(), local.getMontoTotal(), local.getFechaHora(), local.getMetodoPago(), carritoDTO);
+            return new VentaLocalDTO(local.getIdVenta(), local.getMontoTotal(), local.getFechaHora(), local.getMetodoPago(), local.getUsuario(), carritoDTO);
         }
         return null;
     }

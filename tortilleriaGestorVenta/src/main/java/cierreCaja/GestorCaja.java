@@ -15,8 +15,9 @@ public class GestorCaja implements IGestorCaja {
     @Override
     public CorteCajaDTO prepararResumen(double efectivoFisico) {
         double[] totales = dao.obtenerVentasSegmentadas();
-        return new CorteCajaDTO(totales[0], totales[1], totales[2], efectivoFisico);
+        return new CorteCajaDTO(totales[0], totales[1], totales[2], efectivoFisico, "En proceso");
     }
+    
     @Override
     public double[] obtenerTotalesSistema() {
         return dao.obtenerVentasSegmentadas();
@@ -28,7 +29,8 @@ public class GestorCaja implements IGestorCaja {
             corteDTO.getVentasEfectivo(), 
             corteDTO.getVentasCredito(), 
             corteDTO.getVentasDebito(), 
-            corteDTO.getEfectivoContado()
+            corteDTO.getEfectivoContado(),
+            corteDTO.getUsuario()   
         );
         if (corteBO.getEfectivoContado() < 0) {
             return false; 
@@ -37,7 +39,8 @@ public class GestorCaja implements IGestorCaja {
             corteBO.getVentasEfectivo(), 
             corteBO.getVentasCredito(), 
             corteBO.getVentasDebito(), 
-            corteBO.getEfectivoContado()
+            corteBO.getEfectivoContado(),
+            corteBO.getUsuario() 
         );
         return dao.guardarCorte(dtoParaGuardar);
     }

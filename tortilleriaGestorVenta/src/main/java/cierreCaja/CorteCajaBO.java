@@ -18,8 +18,9 @@ public class CorteCajaBO {
     private double efectivoContado;
     private double diferencia;
     private Date fecha;
+    private String usuario;
 
-    public CorteCajaBO(double ventasEfectivo, double ventasCredito, double ventasDebito, double efectivoContado) {
+    public CorteCajaBO(double ventasEfectivo, double ventasCredito, double ventasDebito, double efectivoContado, String usuario) {
         this.ventasEfectivo = ventasEfectivo;
         this.ventasCredito = ventasCredito;
         this.ventasDebito = ventasDebito;
@@ -27,8 +28,17 @@ public class CorteCajaBO {
         this.efectivoContado = efectivoContado;
         this.diferencia = efectivoContado - ventasEfectivo;
         this.fecha = new Date();
+        this.usuario = usuario;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
     public double getVentasEfectivo() {
         return ventasEfectivo;
     }

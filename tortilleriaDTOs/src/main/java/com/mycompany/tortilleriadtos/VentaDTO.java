@@ -16,20 +16,30 @@ public abstract class VentaDTO {
     protected int idVenta;
     protected double montoTotal;
     protected Date fechaHora;
-    protected String tipoVenta; // Para el filtro de reportes ("LOCAL" o "DOMICILIO")
+    protected String tipoVenta;
+    protected String usuario;
     protected List<DetalleVentaDTO> carrito;
 
     public VentaDTO() {
     }
 
-    public VentaDTO(int idVenta, double montoTotal, Date fechaHora, String tipoVenta, List<DetalleVentaDTO> carrito) {
+    public VentaDTO(int idVenta, double montoTotal, Date fechaHora, String tipoVenta, String usuario, List<DetalleVentaDTO> carrito) {
         this.idVenta = idVenta;
         this.montoTotal = montoTotal;
         this.fechaHora = fechaHora;
         this.tipoVenta = tipoVenta;
+        this.usuario = usuario;
         this.carrito = carrito;
     }
+    
+    public String getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
     public int getIdVenta() {
         return idVenta;
     }
