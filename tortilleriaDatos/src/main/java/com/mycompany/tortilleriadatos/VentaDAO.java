@@ -94,6 +94,7 @@ public class VentaDAO implements  IVentaDAO{
         Number totalNum = (Number) doc.get("montoTotal");
         double total = totalNum != null ? totalNum.doubleValue() : 0.0;
         String metodo = doc.getString("metodoPago") != null ? doc.getString("metodoPago") : "Efectivo";
+        String usuario = doc.getString("usuario") != null ? doc.getString("usuario") : "Desconocido"; // NUEVO
         Date fecha = new Date(); 
         Object fechaObjeto = doc.get("fecha");
         if (fechaObjeto instanceof Date) {
@@ -115,6 +116,6 @@ public class VentaDAO implements  IVentaDAO{
                 productos.add(new DetalleVentaDTO(nombreProd, tipoProd, kilosFinal, subtotalFinal));
             }
         }
-        return new VentaLocalDTO(id, total, fecha, metodo, productos);
+        return new VentaLocalDTO(id, total, fecha, metodo, usuario, productos);
     }
 }

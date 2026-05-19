@@ -91,6 +91,7 @@ public class CancelacionDAO implements ICancelacionDAO {
         c.setIdVenta(doc.getInteger("idVenta", 0));
         c.setFechaCancelacion(doc.getDate("fechaCancelacion"));
         c.setMotivo(doc.getString("motivo"));
+        c.setUsuario(doc.getString("usuario") != null ? doc.getString("usuario") : "Desconocido"); // NUEVO
 
         Document ventaDoc = (Document) doc.get("ventaOriginal");
         if (ventaDoc != null) {
@@ -109,11 +110,13 @@ public class CancelacionDAO implements ICancelacionDAO {
             }
             Number total = (Number) ventaDoc.get("montoTotal");
             String metodoPago = ventaDoc.getString("metodoPago");
+            String vUsuario = ventaDoc.getString("usuario") != null ? ventaDoc.getString("usuario") : "Desconocido"; // NUEVO
             VentaLocalDTO venta = new VentaLocalDTO(
                     ventaDoc.getInteger("idVenta", 0),
                     total != null ? total.doubleValue() : 0,
                     ventaDoc.getDate("fecha") != null ? ventaDoc.getDate("fecha") : new Date(),
                     metodoPago != null ? metodoPago : "N/A",
+                    vUsuario,
                     productos);
             c.setVentaOriginal(venta);
         }

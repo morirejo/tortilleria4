@@ -58,13 +58,26 @@ public class CajaDAO implements ICajaDAO {
     @Override
     public boolean guardarCorte(CorteCajaDTO corte) {
         try {
+            LocalDate hoy = LocalDate.now();
+            Date inicio = Date.from(hoy.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Date fin = Date.from(hoy.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Document filtroVentas = new Document("fecha", new Document("$gte", inicio).append("$lt", fin));
+            java.util.List<Document> ventasDelDia = new java.util.ArrayList<>();
+            try (MongoCursor<Document> cursor = collectionVentas.find(filtroVentas).iterator()) {
+                while (cursor.hasNext()) {
+                    ventasDelDia.add(cursor.next());
+                }
+            }
             Document doc = new Document("fecha", corte.getFecha())
+                    .append("usuario", corte.getUsuario()) // NUEVO
                     .append("ventasEfectivo", corte.getVentasEfectivo())
                     .append("ventasCredito", corte.getVentasCredito())
                     .append("ventasDebito", corte.getVentasDebito())
                     .append("totalSistema", corte.getTotalSistema())
                     .append("efectivoContado", corte.getEfectivoContado())
-                    .append("diferencia", corte.getDiferencia());
+                    .append("diferencia", corte.getDiferencia())
+                    .append("ventas", ventasDelDia); 
+                    
             collectionCortes.insertOne(doc);
             return true;
         } catch (Exception e) {
