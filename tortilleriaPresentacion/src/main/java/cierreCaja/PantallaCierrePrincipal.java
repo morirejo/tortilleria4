@@ -27,6 +27,7 @@ public class PantallaCierrePrincipal extends javax.swing.JFrame {
         VentasCredito.setEditable(false);
         VentasDebito.setEditable(false);
         Total.setEditable(false);
+        lblUsuarioCierre.setText("Cajero: " + mediador.getUsuarioActual());
     }
 
     /**
@@ -48,6 +49,7 @@ public class PantallaCierrePrincipal extends javax.swing.JFrame {
         VentasDebito = new javax.swing.JTextField();
         Total = new javax.swing.JTextField();
         btnIniciar = new javax.swing.JButton();
+        lblUsuarioCierre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +75,8 @@ public class PantallaCierrePrincipal extends javax.swing.JFrame {
                 btnIniciarActionPerformed(evt);
             }
         });
+
+        lblUsuarioCierre.setText("jLabel5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +109,10 @@ public class PantallaCierrePrincipal extends javax.swing.JFrame {
                                 .addComponent(ventasEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
-                        .addComponent(btnIniciar)))
+                        .addComponent(btnIniciar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblUsuarioCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,9 +136,11 @@ public class PantallaCierrePrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btnIniciar)
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsuarioCierre)
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -159,6 +168,7 @@ public class PantallaCierrePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblUsuarioCierre;
     private javax.swing.JTextField ventasEfectivo;
     // End of variables declaration//GEN-END:variables
 }

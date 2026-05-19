@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -130,8 +131,18 @@ public class PantallaLogin extends JFrame {
             txtPassword.setText("");
             return;
         }
+        
+        if (rol != null) {
+            ControlPresentacionVenta mediador = new ControlPresentacionVenta();
+            mediador.setUsuarioActual(usuario); 
+            this.dispose();
+            new PantallaVenta(mediador, rol).setVisible(true);
+        }
 
-        ControlPresentacionVenta mediador = new ControlPresentacionVenta(rol);
+        ControlPresentacionVenta mediador = new ControlPresentacionVenta(rol, usuario);
+        
+        mediador.setUsuarioActual(usuario); 
+
         this.dispose();
         new PantallaVenta(mediador, rol).setVisible(true);
     }

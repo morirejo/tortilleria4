@@ -185,6 +185,14 @@ public class PantallaVenta extends JFrame {
             }
             mediador.mostrarMetodoPago();
         });
+        
+        JPanel panelInfoUsuario = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JLabel lblUsuario = new JLabel("Atendido por: " + mediador.getUsuarioActual());
+        lblUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        lblUsuario.setForeground(Color.BLUE);
+        panelInfoUsuario.add(lblUsuario);
+
+        panelNorte.add(panelInfoUsuario);
     }
 
     public void actualizarTabla() {

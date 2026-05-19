@@ -15,6 +15,16 @@ import javax.swing.JOptionPane;
 public class ControlPresentacionCierre {
     private FachadaCaja fachada = new FachadaCaja();
     private CorteCajaDTO corteTemporal;
+    private String usuarioActual = "admin default";
+    
+    public void setUsuarioActual(String usuarioActual) {
+        this.usuarioActual = usuarioActual;
+    }
+
+    public String getUsuarioActual() {
+        return usuarioActual;
+    }
+    
 
     public void iniciarCierre() {
         double[] totales = fachada.obtenerTotalesDia();
@@ -38,6 +48,7 @@ public class ControlPresentacionCierre {
     }
 
     public void finalizarCorte(JFrame actual) {
+        this.corteTemporal.setUsuario(usuarioActual); 
         boolean exito = fachada.procesarCierre(this.corteTemporal);
         if (exito) {
             actual.dispose();

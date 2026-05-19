@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  * @author MoriTejo
  */
 public class ControlPresentacionVenta {
-   private IFachadaVentas fachada = new FachadaVenta();
+    private IFachadaVentas fachada = new FachadaVenta();
 
 
     private GestorCancelacion gestorCancelacion = new GestorCancelacion();
@@ -34,10 +34,12 @@ public class ControlPresentacionVenta {
     private double totalActual = 0.0;
     
     private String rol;
+    private String usuarioActual = "cajero default";
 
-public ControlPresentacionVenta(String rol) {
-    this.rol = rol;
-}
+    public ControlPresentacionVenta(String rol, String usuarioActual) {
+        this.rol = rol;
+        this.usuarioActual = usuarioActual;
+    }
 
     public ControlPresentacionVenta() {}
 
@@ -50,13 +52,21 @@ public ControlPresentacionVenta(String rol) {
 
     public double getTotalActual() { return totalActual; }
 
+    public String getUsuarioActual() {
+        return usuarioActual;
+    }
+    
+    public void setUsuarioActual(String usuarioActual) {
+        this.usuarioActual = usuarioActual;
+    }
+    
+    
     public List<DetalleVentaDTO> getCarritoActual() { return carritoActual; }
 
     public void solicitarCobro(double efectivoRecibido, String metodoPago, JFrame pantallaPagoActual) {
         int idGenerico = 0;
         Date fechaVenta = new Date();
-        VentaDTO ventaNueva = new VentaLocalDTO(idGenerico, totalActual, fechaVenta, metodoPago, carritoActual);
-
+        VentaDTO ventaNueva = new VentaLocalDTO(idGenerico, totalActual, fechaVenta, metodoPago, usuarioActual, carritoActual);
         boolean exito = fachada.confirmarVentaLocal(ventaNueva, efectivoRecibido);
 
         if (exito) {
@@ -94,7 +104,7 @@ public ControlPresentacionVenta(String rol) {
 
 
     public boolean cancelarVenta(int idVenta, String motivo, VentaDTO snapshot) {
-        return gestorCancelacion.cancelarVentaConRegistro(idVenta, motivo, snapshot);
+        return gestorCancelacion.cancelarVentaConRegistro(idVenta, motivo, this.usuarioActual, snapshot);
     }
 
     public boolean cancelarVenta(int idVenta) {
